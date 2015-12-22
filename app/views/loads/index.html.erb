@@ -1,0 +1,47 @@
+<h1>Listing loads</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Caliber</th>
+      <th>Primer</th>
+      <th>Bullet</th>
+      <th>Powder</th>
+      <th>Charge</th>
+      <th>Trim</th>
+      <th>Oal</th>
+      <th>Velocity</th>
+      <th>Notes</th>
+      <th>Load date</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @loads.each do |load| %>
+      <tr>
+        <td><%= load.name %></td>
+        <td><%= load.caliber %></td>
+        <td><%= load.primer %></td>
+        <td><%= load.bullet %></td>
+        <td><%= load.powder %></td>
+        <td><%= load.charge %></td>
+        <td><%= load.trim %></td>
+        <td><%= load.oal %></td>
+        <td><%= load.velocity %></td>
+        <td><%= load.notes %></td>
+        <td><%= load.load_date %></td>
+        <td><%= load.user_id %></td>
+        <td><%= link_to 'Show', load %></td>
+        <td><%= link_to 'Edit', edit_load_path(load) %></td>
+        <td><%= link_to 'Destroy', load, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Load', new_load_path %>

@@ -1,0 +1,65 @@
+<%= form_for(@load) do |f| %>
+  <% if @load.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@load.errors.count, "error") %> prohibited this load from being saved:</h2>
+
+      <ul>
+      <% @load.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :caliber %><br>
+    <%= f.text_field :caliber %>
+  </div>
+  <div class="field">
+    <%= f.label :primer %><br>
+    <%= f.text_field :primer %>
+  </div>
+  <div class="field">
+    <%= f.label :bullet %><br>
+    <%= f.text_field :bullet %>
+  </div>
+  <div class="field">
+    <%= f.label :powder %><br>
+    <%= f.text_field :powder %>
+  </div>
+  <div class="field">
+    <%= f.label :charge %><br>
+    <%= f.text_field :charge %>
+  </div>
+  <div class="field">
+    <%= f.label :trim %><br>
+    <%= f.text_field :trim %>
+  </div>
+  <div class="field">
+    <%= f.label :oal %><br>
+    <%= f.text_field :oal %>
+  </div>
+  <div class="field">
+    <%= f.label :velocity %><br>
+    <%= f.text_field :velocity %>
+  </div>
+  <div class="field">
+    <%= f.label :notes %><br>
+    <%= f.text_area :notes %>
+  </div>
+  <div class="field">
+    <%= f.label :load_date %><br>
+    <%= f.datetime_select :load_date %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

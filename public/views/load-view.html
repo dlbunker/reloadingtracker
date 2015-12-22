@@ -1,0 +1,55 @@
+<div class="container pad-top">
+  <table class="table loadtable">
+      <tr>
+          <td><h3>Details for {{load.name}}</h3></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>Name</td>
+          <td>{{load.name}}</td>
+      </tr>
+      <tr>
+          <td>Load Date</td>
+          <td>{{load.load_date}}</td>
+      </tr>
+      <tr>
+          <td>Caliber</td>
+          <td>{{load.cailber}}</td>
+      </tr>
+      <tr>
+          <td>Primer</td>
+          <td>{{load.primer}}</td>
+      </tr>
+      <tr>
+          <td>Bullet</td>
+          <td>{{load.bullet}}</td>
+      </tr>
+      <tr>
+          <td>Powder</td>
+          <td>{{load.powder}}</td>
+      </tr>
+      <tr>
+          <td>Charge</td>
+          <td>{{load.charge}}</td>
+      </tr>
+      <tr>
+          <td>Trim Length</td>
+          <td>{{load.trim}}</td>
+      </tr>
+      <tr>
+          <td>Overall Length</td>
+          <td>{{load.oal}}</td>
+      </tr>
+      <tr>
+          <td>Velocity</td>
+          <td>{{load.velocity}}</td>
+      </tr>
+      <tr>
+          <td>Notes</td>
+          <td>{{load.notes}}</td>
+      </tr>
+  </table>
+  <div>
+      <a class="btn btn-primary" ui-sref="editLoad({id:load.id})">Edit</a>
+  </div>
+</div>

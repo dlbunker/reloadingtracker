@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  caliber: MyString
+  primer: MyString
+  bullet: MyString
+  powder: MyString
+  charge: 9.99
+  trim: 9.99
+  oal: 9.99
+  velocity: 9.99
+  notes: MyText
+  load_date: 2015-12-22 13:23:43
+  user_id: 1
+
+two:
+  name: MyString
+  caliber: MyString
+  primer: MyString
+  bullet: MyString
+  powder: MyString
+  charge: 9.99
+  trim: 9.99
+  oal: 9.99
+  velocity: 9.99
+  notes: MyText
+  load_date: 2015-12-22 13:23:43
+  user_id: 1
