@@ -14,5 +14,10 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-//= require_tree ./lib
+//= require_tree ./lib/angular/js
+//= require_tree ./lib/assets/js
+//= require_tree ./lib/bootstrap/js
+//= require_tree ./lib/html5shiv
+//= require_tree ./lib/require
+//= require_tree ./lib/respond
 //= require_tree ./js
