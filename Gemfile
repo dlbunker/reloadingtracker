@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.4'
+gem 'rails', '4.2.1'
 gem 'rails-api'
 
 ### OpenShift Online changes:
@@ -57,7 +57,7 @@ gem 'spring',        group: :development
 
 gem 'devise'
 gem 'omniauth'
-gem 'devise_token_auth', '0.1.30'
+gem 'devise_token_auth', '0.1.36'
 
 gem 'mailgun_rails'
 

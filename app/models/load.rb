@@ -1,4 +1,6 @@
 class Load < ActiveRecord::Base
+  validates_presence_of :name, :user
+  belongs_to :user
 
   def load_date=(arg)
     if !arg.nil?

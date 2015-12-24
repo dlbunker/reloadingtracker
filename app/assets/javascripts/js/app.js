@@ -194,26 +194,26 @@
 	        content: "<div id='alert-password-reset-request-error'>Error: " + _.map(data.errors).toString() + "</div>"
 	      });
 	    });
-	    passwordChangeModal = function() {$modal({
+	    passwordChangeModal = $modal({
 	      title: "Change your password!",
 	      html: true,
 	      show: false,
 	      contentTemplate: 'views/user_registrations/password-reset-modal.html'
-	    });}
-	    passwordChangeSuccessModal = function() {$modal({
+	    });
+	    passwordChangeSuccessModal = $modal({
 	      title: "Success",
 	      html: true,
 	      show: false,
 	      content: "<div id='alert-password-change-success'>Your password " + "has been successfully updated."
-	    });}
+	    });
 	    passwordChangeErrorScope = $rootScope.$new();
-	    passwordChangeErrorModal = function() {$modal({
+	    passwordChangeErrorModal = $modal({
 	      title: "Error",
 	      html: true,
 	      show: false,
 	      scope: passwordChangeErrorScope,
 	      contentTemplate: 'views/user_registrations/password-change-error-modal.html'
-	    });}
+	    });
 	    $rootScope.showPasswordChangeModal = function() {
 	      return passwordChangeModal.show();
 	    };

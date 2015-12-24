@@ -5,7 +5,7 @@ class Api::LoadsController < ApplicationController
   respond_to :json
 
   def index
-    @loads = Load.all
+    @loads = Load.all.where(:user_id => current_api_user.id)
     respond_with(@loads)
   end
 
@@ -23,6 +23,7 @@ class Api::LoadsController < ApplicationController
 
   def create
     @load = Load.new(load_params)
+    @load.user = current_api_user
     @load.save
     respond_with(@load, location: api_load_url(@load))
   end
