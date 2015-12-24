@@ -4,7 +4,7 @@ angular.module('app.controllers', []).controller('LoadListController', function(
   $scope.deleteLoad = function(load) {
     if (popupService.showPopup('Really delete this?')) {
       load.$delete(function() {
-        $window.location.href = ''; //redirect to home
+        $scope.loads = Load.query();
       });
     }
   };
@@ -29,5 +29,5 @@ angular.module('app.controllers', []).controller('LoadListController', function(
     $scope.load = Load.get({ id: $stateParams.id });
   };
 
-  $scope.loadLoad(); 
+  $scope.loadLoad();
 });

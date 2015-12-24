@@ -1,5 +1,6 @@
-class LoadsController < ApplicationController
+class Api::LoadsController < ApplicationController
   before_action :set_load, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_api_user!
 
   respond_to :json
 
@@ -23,7 +24,7 @@ class LoadsController < ApplicationController
   def create
     @load = Load.new(load_params)
     @load.save
-    respond_with(@load)
+    respond_with(@load, location: api_load_url(@load))
   end
 
   def update
@@ -33,7 +34,8 @@ class LoadsController < ApplicationController
 
   def destroy
     @load.destroy
-    respond_with(@load)
+    head :no_content
+    # respond_with(@load)
   end
 
   private

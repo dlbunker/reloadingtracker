@@ -1,5 +1,5 @@
 angular.module('app.services', []).factory('Load', function($resource) {
-  return $resource('http://localhost:3000/loads/:id', { id: '@id' }, {
+  return $resource('/api/v1/loads/:id', { id: '@id' }, {
     update: {
       method: 'PUT'
     }

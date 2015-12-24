@@ -36,5 +36,10 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-  
+
+  config.action_mailer.delivery_method = :mailgun
+  config.action_mailer.mailgun_settings = {
+          api_key: 'key-04601611b1f0e3445279091dfbd4260a',
+          domain: 'mg.reloadingtracker.com'
+  }
 end

@@ -1,8 +1,17 @@
 Rails.application.routes.draw do
+  root to: redirect('index.html')
+  # mount_devise_token_auth_for 'User', at: 'auth'
 
-  resources :loads, defaults: {format: :json}
+  namespace :api, :defaults => { :format => 'json' } do
+    scope :v1 do
+      mount_devise_token_auth_for 'User', at: 'auth'
 
-  devise_for :users
+      resources :loads, defaults: {format: :json}
+    end
+  end
+
+
+  # devise_for :users
   # root to: "home#index"
 
   # The priority is based upon order of creation: first created -> highest priority.

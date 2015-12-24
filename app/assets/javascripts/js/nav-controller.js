@@ -11,11 +11,7 @@ angular.module('navController', [])
 
 		$scope.pages = [
 			{
-				name: 'Home',
-				url: '#/'
-			},
-			{
-				name: 'Loads',
+				name: 'My Loads',
 				url: '#/loads'
 			}
 		]

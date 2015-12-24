@@ -85,4 +85,11 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_mailer.default_url_options = { host: 'reloadingtracker-mcirqueout.rhcloud.com', port: 80 }
+
+  config.action_mailer.delivery_method = :mailgun
+  config.action_mailer.mailgun_settings = {
+          api_key: 'key-04601611b1f0e3445279091dfbd4260a',
+          domain: 'mg.reloadingtracker.com'
+  }
+
 end
