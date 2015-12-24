@@ -89,7 +89,7 @@ GEM
     mini_portile2 (2.0.0)
     minitest (5.8.3)
     multi_json (1.11.2)
-    mysql2 (0.4.2)
+    mysql2 (0.3.20)
     netrc (0.11.0)
     nokogiri (1.6.7.1)
       mini_portile2 (~> 2.0.0.rc2)
@@ -185,7 +185,7 @@ DEPENDENCIES
   jquery-rails
   mailgun_rails
   minitest
-  mysql2
+  mysql2 (~> 0.3.18)
   omniauth
   pg
   rails (= 4.2.1)
