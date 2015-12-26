@@ -1,6 +1,6 @@
 class AddMoreColumnsToCalibers < ActiveRecord::Migration
   def change
-    add_column :calibers, :mm, :decimal
+    # add_column :calibers, :mm, :decimal
 
     Caliber.create(name: '240 Weatherby Magnum', cal_type: 'RIFLE', metric: 240, inches: 0.243, mm: 6)
     Caliber.create(name: '243 Winchester', cal_type: 'RIFLE', metric: 240, inches: 0.243, mm: 6)
