@@ -9,3 +9,11 @@ angular.module('app.services', []).factory('Load', function($resource) {
         return $window.confirm(message);
     }
 });
+
+angular.module('app.services').factory('Caliber', function($resource) {
+  return $resource('/api/v1/calibers/:id', { id: '@id' }, {
+    update: {
+      method: 'PUT'
+    }
+  });
+});

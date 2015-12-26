@@ -6,6 +6,7 @@ class Api::LoadsController < ApplicationController
 
   def index
     @loads = Load.all.where(:user_id => current_api_user.id)
+    @calibers = Caliber.all
     respond_with(@loads)
   end
 
@@ -45,6 +46,6 @@ class Api::LoadsController < ApplicationController
     end
 
     def load_params
-      params.require(:load).permit(:name, :caliber, :primer, :bullet, :powder, :charge, :trim, :oal, :velocity, :notes, :load_date, :user_id)
+      params.require(:load).permit(:name, :caliber_id, :primer, :bullet, :powder, :charge, :trim, :oal, :velocity, :notes, :load_date, :user_id, :qty)
     end
 end

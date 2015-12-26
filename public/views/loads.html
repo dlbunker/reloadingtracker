@@ -1,16 +1,19 @@
 <div class="container pad-top">
   <a ui-sref="newLoad" class="btn-primary btn-lg nodecoration">Add New Load</a>
-  <table class="table loadtable">
+  <h3>My Loads</h3>
+  <table class="table table-bordered table-striped table-hover loadtable">
       <tr>
-          <td><h3>My Loads</h3></td>
-          <td></td>
+          <th>Load Name</th>
+          <th>Date</th>
+          <th>Caliber</th>
+          <th>Actions</th>
       </tr>
       <tr ng-repeat="load in loads">
-          <td>{{load.name}}</td>
-          <td>{{load.load_date}}</td>
-          <td>{{load.caliber}}</td>
+          <td><a ui-sref="viewLoad({id:load.id})">{{load.name}}</a></td>
+          <td>{{ load.load_date | date:'MM-dd-yyyy' }}</td>
+          <td>{{load.caliber.name}}</td>
           <td>
-              <a class="btn btn-primary" ui-sref="viewLoad({id:load.id})">View</a>
+              <a class="btn btn-primary" ui-sref="editLoad({id:load.id})">Edit</a>
               <a class="btn btn-danger"  ng-click="deleteLoad(load)">Delete</a>
           </td>
       </tr>

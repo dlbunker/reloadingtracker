@@ -4,6 +4,7 @@
 		 'navController',
 		 'ngCookies',
 		 'ui.bootstrap',
+		 'ui.bootstrap.datetimepicker',
 		 'ngResource',
 		 'ng-token-auth',
 		 'mgcrea.ngStrap',
@@ -11,7 +12,7 @@
 		 'app.services'])
 
 	// define for requirejs loaded modules
-	define('app', [], function() { return app; });
+	// define('app', [], function() { return app; });
 
 	// function for dynamic load with requirejs of a javascript module for use with a view
 	// in the state definition call add property `resolve: req('/views/ui.js')`
@@ -165,6 +166,8 @@
 	        html: true,
 	        content: "<div id='alert-email-confirmation-success'>Welcome " + data.email + ". Your account has been successfully created." + "</div>"
 	      });
+
+				return $state.go('home');
 	    });
 	    $rootScope.$on('auth:email-confirmation-error', function(ev, data) {
 	      $modal({

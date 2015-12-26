@@ -3,13 +3,13 @@ class Load < ActiveRecord::Base
   belongs_to :user
   belongs_to :caliber
 
-  def load_date=(arg)
-    if !arg.nil?
-      if arg.is_a?(String)
-        self[:load_date] = DateTime.strptime(arg, "%m-%d-%Y")
-      else #just push it through
-        self[:load_date] = arg
-      end
-    end
-  end
+  # def load_date=(arg)
+  #   if !arg.nil?
+  #     if arg.is_a?(String)
+  #       self[:load_date] = DateTime.strptime(arg, "%m-%d-%Y")
+  #     else #just push it through
+  #       self[:load_date] = arg
+  #     end
+  #   end
+  # end
 end
