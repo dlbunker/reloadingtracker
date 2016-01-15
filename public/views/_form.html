@@ -1,81 +1,105 @@
 <div class="form-group">
-    <label for="name" class="col-sm-2 control-label">Name</label>
-    <div class="col-sm-10">
-        <input type="text" ng-model="load.name" class="form-control" id="name" placeholder="Your Load Name"/>
-    </div>
+  <label for="name" class="col-sm-2 control-label">Name</label>
+  <div class="col-sm-10">
+    <input type="text" ng-model="load.name" class="form-control" id="name" placeholder="Your Load Name"/>
+  </div>
 </div>
 <div class="form-group">
-    <label for="load_date" class="col-sm-2 control-label">Load Date</label>
-    <div class="col-sm-10">
-      <datepicker style="display:inline-block" id="load_date" ng-model="load.load_date"
-            show-weeks="true" class="well well-sm"></datepicker>
-    </div>
+  <label for="load_date" class="col-sm-2 control-label">Load Date</label>
+  <div class="col-sm-10">
+    <datepicker style="display:inline-block" id="load_date" ng-model="load.load_date"
+                show-weeks="true" class="well well-sm"></datepicker>
+  </div>
 </div>
 <div class="form-group">
-    <label for="caliber_id" class="col-sm-2 control-label">Caliber</label>
-    <div class="col-sm-10">
-      <select id="caliber_id" ng-model="load.caliber_id"
-        ng-options="cal.id as cal.name for cal in calibers" class="form-control">
-      </select>
-    </div>
+  <label for="caliber_id" class="col-sm-2 control-label">Caliber</label>
+  <div class="col-sm-10">
+    <select id="caliber_id" ng-model="load.caliber_id"
+            ng-options="cal.id as cal.name for cal in calibers" class="form-control">
+    </select>
+  </div>
 </div>
 <div class="form-group">
-    <label for="primer" class="col-sm-2 control-label">Primer</label>
-    <div class="col-sm-10">
-        <input type="text" ng-model="load.primer" class="form-control" id="primer" placeholder="Primer"/>
-    </div>
+  <label for="primer_id" class="col-sm-2 control-label">Primer</label>
+  <div class="col-sm-8">
+    <select id="primer_id" ng-model="load.primer_id"
+            ng-options="primer.id as primer.name for primer in primers" class="form-control">
+    </select>
+    <input id="primer" name="primer" ng-model="load.primer" type="text" class="form-control" placeholder="Primer" style="display:none;"/>
+  </div>
+  <div class="col-sm-2 text-left">
+    <a class="btn btn-default" href="javascript:void(0);"
+       onclick="$('#primer').toggle(); $('#primer_id').toggle();">Add Primer</a>
+  </div>
 </div>
 <div class="form-group">
-    <label for="bullet" class="col-sm-2 control-label">Bullet</label>
-    <div class="col-sm-10">
-        <input type="text" ng-model="load.bullet" class="form-control" id="bullet" placeholder="Bullet"/>
-    </div>
+  <label for="bullet_id" class="col-sm-2 control-label">Bullet</label>
+  <div class="col-sm-8">
+    <select id="bullet_id" ng-model="load.bullet_id"
+            ng-options="bullet.id as bullet.name for bullet in bullets" class="form-control">
+    </select>
+    <input id="bullet" name="bullet" ng-model="load.bullet" type="text" class="form-control" placeholder="Bullet"
+           style="display:none;"/>
+  </div>
+  <div class="col-sm-2 text-left">
+    <a class="btn btn-default" href="javascript:void(0);"
+       onclick="$('#bullet').toggle(); $('#bullet_id').toggle();">Add Bullet</a>
+  </div>
 </div>
 <div class="form-group">
-    <label for="powder" class="col-sm-2 control-label">Powder</label>
-    <div class="col-sm-10">
-        <input type="text" ng-model="load.powder" class="form-control" id="powder" placeholder="Powder"/>
-    </div>
+  <label for="powder_id" class="col-sm-2 control-label">Powder</label>
+  <div class="col-sm-8">
+    <select id="powder_id" ng-model="load.powder_id"
+            ng-options="powder.id as powder.name for powder in powders" class="form-control">
+    </select>
+    <input id="powder" name="powder" ng-model="load.powder"  type="text" class="form-control" placeholder="Powder"
+           style="display:none;"/>
+  </div>
+  <div class="col-sm-2 text-left">
+    <a class="btn btn-default" href="javascript:void(0);"
+       onclick="$('#powder').toggle(); $('#powder_id').toggle();">Add Powder</a>
+  </div>
 </div>
 <div class="form-group">
-    <label for="charge" class="col-sm-2 control-label">Charge</label>
-    <div class="col-sm-10">
-        <input type="text" ng-model="load.charge" class="form-control" id="charge" placeholder="Charge"/>
-    </div>
+  <label for="charge" class="col-sm-2 control-label">Charge</label>
+  <div class="col-sm-10">
+    <input type="text" ng-model="load.charge" class="form-control" id="charge" placeholder="Charge"/>
+  </div>
 </div>
 <div class="form-group">
-    <label for="trim" class="col-sm-2 control-label">Trim</label>
-    <div class="col-sm-10">
-        <input type="text" ng-model="load.trim" class="form-control" id="trim" placeholder="Case Trim Length"/>
-    </div>
+  <label for="trim" class="col-sm-2 control-label">Trim</label>
+  <div class="col-sm-10">
+    <input type="text" ng-model="load.trim" class="form-control" id="trim" placeholder="Case Trim Length"/>
+  </div>
 </div>
 <div class="form-group">
-    <label for="oal" class="col-sm-2 control-label">Overall Length</label>
-    <div class="col-sm-10">
-        <input type="text" ng-model="load.oal" class="form-control" id="oal" placeholder="Case Overall Length"/>
-    </div>
+  <label for="oal" class="col-sm-2 control-label">Overall Length</label>
+  <div class="col-sm-10">
+    <input type="text" ng-model="load.oal" class="form-control" id="oal" placeholder="Case Overall Length"/>
+  </div>
 </div>
 <div class="form-group">
-    <label for="velocity" class="col-sm-2 control-label">Velocity</label>
-    <div class="col-sm-10">
-        <input type="text" ng-model="load.velocity" class="form-control" id="velocity" placeholder="Expected Final Bullet Velocity"/>
-    </div>
+  <label for="velocity" class="col-sm-2 control-label">Velocity</label>
+  <div class="col-sm-10">
+    <input type="text" ng-model="load.velocity" class="form-control" id="velocity"
+           placeholder="Expected Final Bullet Velocity"/>
+  </div>
 </div>
 <div class="form-group">
-    <label for="qty" class="col-sm-2 control-label">Quantity</label>
-    <div class="col-sm-10">
-        <input type="text" ng-model="load.qty" class="form-control" id="qty" placeholder="Quantity Made"/>
-    </div>
+  <label for="qty" class="col-sm-2 control-label">Quantity</label>
+  <div class="col-sm-10">
+    <input type="text" ng-model="load.qty" class="form-control" id="qty" placeholder="Quantity Made"/>
+  </div>
 </div>
 <div class="form-group">
-    <label for="notes" class="col-sm-2 control-label">Notes</label>
-    <div class="col-sm-10">
-        <textarea ng-model="load.notes" class="form-control" id="notes" placeholder="Notes"></textarea>
-    </div>
+  <label for="notes" class="col-sm-2 control-label">Notes</label>
+  <div class="col-sm-10">
+    <textarea ng-model="load.notes" class="form-control" id="notes" placeholder="Notes"></textarea>
+  </div>
 </div>
 <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-        <a class="btn btn-danger" href="#/loads">Cancel</a>
-        <input type="submit" class="btn btn-primary" value="Save"/>
-    </div>
+  <div class="col-sm-offset-2 col-sm-10">
+    <a class="btn btn-danger" href="#/loads">Cancel</a>
+    <input type="submit" class="btn btn-primary" value="Save"/>
+  </div>
 </div>

@@ -1,5 +1,6 @@
 class Api::LoadsController < ApplicationController
   before_action :set_load, only: [:show, :edit, :update, :destroy]
+  before_action :build_traits, only: [:create, :update]
   before_action :authenticate_api_user!
 
   respond_to :json
@@ -41,11 +42,23 @@ class Api::LoadsController < ApplicationController
   end
 
   private
-    def set_load
-      @load = Load.find(params[:id])
-    end
+  def set_load
+    @load = Load.find(params[:id])
+  end
 
-    def load_params
-      params.require(:load).permit(:name, :caliber_id, :primer, :bullet, :powder, :charge, :trim, :oal, :velocity, :notes, :load_date, :user_id, :qty)
+  def load_params
+    params.require(:load).permit(:name, :caliber_id, :primer_id, :bullet_id, :powder_id, :charge, :trim, :oal, :velocity, :notes, :load_date, :user_id, :qty)
+  end
+
+  def build_traits
+    Trait::TYPES.each do |type|
+      traitId = params["#{type}_id"]
+      traitValue = params[type]
+
+      if (traitId.blank? || traitId == 0) && !"#{traitValue}".blank?
+        trait = Trait.create! :attr_name => type, :name => traitValue
+        params[:load]["#{type}_id"] = trait.id
+      end
     end
+  end
 end
