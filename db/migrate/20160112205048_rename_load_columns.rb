@@ -1,7 +1,6 @@
 class RenameLoadColumns < ActiveRecord::Migration
-  def change
-    
-    # rename_column :loads, :primer, :primer_id
+  def change    
+    rename_column :loads, :primer, :primer_id
     change_column :loads, :primer_id, :integer
 
     rename_column :loads, :bullet, :bullet_id
