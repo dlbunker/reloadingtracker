@@ -12,7 +12,7 @@ class Api::LoadsController < ApplicationController
   end
 
   def show
-    respond_with(@load)
+    render :json => @load.to_json(:include => [:caliber, :primer, :bullet, :powder])
   end
 
   def new

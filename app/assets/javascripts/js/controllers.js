@@ -4,7 +4,7 @@ angular.module('app.controllers', []).controller('LoadListController', function 
   $scope.deleteLoad = function (load) {
     if (popupService.showPopup('Really delete this?')) {
       load.$delete(function () {
-        $scope.loads = Load.query()[0].loads;
+        $scope.loads = Load.query();
       });
     }
   };
