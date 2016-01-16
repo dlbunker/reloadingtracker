@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
       resources :loads, defaults: {format: :json}
       resources :calibers, defaults: {format: :json}
+      resources :traits, defaults: {format: :json}
     end
   end
 
