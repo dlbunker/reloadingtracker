@@ -1,18 +1,22 @@
 angular.module('navController', [])
-	.controller('nav', function($scope, $state) {
-		$scope.title = 'Reloading Tracker';
+    .controller('nav', function ($scope, $state) {
+      $scope.title = 'Reloading Tracker';
 
-		// returns true if the current router url matches the passed in url
-		// so views can set 'active' on links easily
-		$scope.isUrl = function(url) {
-			if (url === '#') return false;
-			return ('#' + $state.$current.url.source + '/').indexOf(url + '/') === 0;
-		};
+      // returns true if the current router url matches the passed in url
+      // so views can set 'active' on links easily
+      $scope.isUrl = function (url) {
+        if (url === '#') return false;
+        return ('#' + $state.$current.url.source + '/').indexOf(url + '/') === 0;
+      };
 
-		$scope.pages = [
-			{
-				name: 'My Loads',
-				url: '#/loads'
-			}
-		]
-	});
+      $scope.pages = [
+        {name: 'My Loads', url: '#/loads'}
+      ];
+
+      //var user = UserService;
+
+      $scope.pages.push({
+        name: 'Traits',
+        url: '#/traits'
+      });
+    });

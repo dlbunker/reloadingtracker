@@ -2,13 +2,14 @@ Rails.application.routes.draw do
   root to: redirect('index.html')
   mount_devise_token_auth_for 'User', at: 'auth'
 
-  namespace :api, :defaults => { :format => 'json' } do
+  namespace :api, :defaults => {:format => 'json'} do
     scope :v1 do
       mount_devise_token_auth_for 'User', at: 'auth'
 
       resources :loads, defaults: {format: :json}
       resources :calibers, defaults: {format: :json}
       resources :traits, defaults: {format: :json}
+      resources :users, defaults: {format: :json}, only: [:show]
     end
   end
 

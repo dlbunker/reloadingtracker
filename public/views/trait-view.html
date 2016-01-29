@@ -1,0 +1,17 @@
+<div class="container pad-top">
+  <h3>{{trait.name}}</h3>
+  <table class="table table-bordered table-striped table-hover traittable">
+      <tr>
+          <td><strong>Trait Name</strong></td>
+          <td style="width: 80%;">{{trait.name}}</td>
+      </tr>
+      <tr>
+          <td><strong>Type</strong></td>
+          <td>{{trait.attr_name}}</td>
+      </tr>
+  </table>
+  <div>
+      <a class="btn btn-danger" href="#/traits">My Traits</a>
+      <a class="btn btn-primary" ui-sref="editTrait({id:trait.id})">Edit</a>
+  </div>
+</div>
