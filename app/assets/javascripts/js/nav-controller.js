@@ -1,5 +1,5 @@
 angular.module('navController', [])
-    .controller('nav', function ($scope, $state) {
+    .controller('nav', function ($scope, $state, $rootScope) {
       $scope.title = 'Reloading Tracker';
 
       // returns true if the current router url matches the passed in url
@@ -10,13 +10,7 @@ angular.module('navController', [])
       };
 
       $scope.pages = [
-        {name: 'My Loads', url: '#/loads'}
+        {name: 'My Loads', url: '#/loads', admin: false},
+        {name: 'Traits', url: '#/traits', admin: true}
       ];
-
-      //var user = UserService;
-
-      $scope.pages.push({
-        name: 'Traits',
-        url: '#/traits'
-      });
     });
