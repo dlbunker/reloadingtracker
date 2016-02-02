@@ -56,7 +56,7 @@
         </div>
         <script type="text/ng-template" id="nav-item.html">
           <span ng-if="page.name && !page.url">{{page.name}}</span>
-          <a ng-show="user.signedIn" ng-if="page.name && page.url && !(page.subPages && page.subPages.length)" href="{{page.url}}">{{page.name}}</a>
+          <a ng-show="user.signedIn && (page.admin == 0 || user.admin)" ng-if="page.name && page.url && !(page.subPages && page.subPages.length)" href="{{page.url}}">{{page.name}}</a>
           <a ng-if="page.name && page.url && page.subPages && page.subPages.length" href="{{page.url}}" data-toggle="dropdown" role="button" aria-expanded="false"
           class="dropdown-toggle">{{page.name}} <span class="caret"></span>
           </a>

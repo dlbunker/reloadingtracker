@@ -1,0 +1,19 @@
+<div class="container pad-top">
+  <a ui-sref="newTrait" class="btn-primary btn-lg nodecoration">Add New Trait</a>
+  <h3>Traits</h3>
+  <table class="table table-bordered table-striped table-hover traittable">
+    <tr>
+      <th>Trait Name</th>
+      <th>Trait Type</th>
+      <th>Actions</th>
+    </tr>
+    <tr ng-repeat="trait in traits">
+      <td><a ui-sref="viewTrait({id:trait.id})">{{trait.name}}</a></td>
+      <td>{{trait.attr_name}}</td>
+      <td>
+        <a class="btn btn-primary" ui-sref="editTrait({id:trait.id})">Edit</a>
+        <a class="btn btn-danger" ng-click="deleteTrait(trait)">Delete</a>
+      </td>
+    </tr>
+  </table>
+</div>
