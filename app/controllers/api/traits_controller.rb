@@ -16,7 +16,7 @@ class Api::TraitsController < ApplicationController
       @traits = Trait.all
 
       unless "#{params[:type]}".blank?
-        @traits = Trait.where(:attr_name => params[:type]) if Trait::TYPES.include? params[:type]
+        @traits = @traits.where(:active => true, :attr_name => params[:type]) if Trait::TYPES.include? params[:type]
       end
     end
 
@@ -48,7 +48,7 @@ class Api::TraitsController < ApplicationController
   end
 
   def destroy
-    @trait.destroy
+    @trait.update_attribute :active, !@trait.active?
     head :no_content
   end
 

@@ -38,7 +38,7 @@ angular.module('app.controllers', [])
         $scope.load = Load.get({id: $stateParams.id});
 
         $scope.calibers = Caliber.query();
-        $scope.bullets = Trait.query({type: 'primer'});
+        $scope.primers = Trait.query({type: 'primer'});
         $scope.bullets = Trait.query({type: 'bullet'});
         $scope.powders = Trait.query({type: 'powder'});
       };
@@ -49,7 +49,7 @@ angular.module('app.controllers', [])
       $scope.traits = Trait.query();
 
       $scope.deleteTrait = function (trait) {
-        if (popupService.showPopup('Really delete this?')) {
+        if (popupService.showPopup('Change the status?')) {
           trait.$delete(function () {
             $scope.traits = Trait.query();
           });

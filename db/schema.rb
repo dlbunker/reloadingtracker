@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160125160405) do
+ActiveRecord::Schema.define(version: 20160208165020) do
 
   create_table "calibers", force: :cascade do |t|
     t.string   "name"
@@ -46,10 +46,11 @@ ActiveRecord::Schema.define(version: 20160125160405) do
   add_index "loads", ["user_id"], name: "index_loads_on_user_id"
 
   create_table "traits", force: :cascade do |t|
-    t.string   "attr_name",  null: false
-    t.string   "name",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "attr_name",                 null: false
+    t.string   "name",                      null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.boolean  "active",     default: true, null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -75,11 +76,7 @@ ActiveRecord::Schema.define(version: 20160125160405) do
     t.text     "tokens"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "is_admin",               default: false
+    t.boolean  "admin",                  default: false
   end
-
-  add_index "users", ["email"], name: "index_users_on_email"
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  add_index "users", ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
 
 end
