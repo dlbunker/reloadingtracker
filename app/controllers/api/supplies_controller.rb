@@ -33,10 +33,10 @@ class Api::SuppliesController < ApplicationController
   end
 
   def trans_types
-    @trans_types = Array.new
+    @trans_types = Hash.new
 
     Transaction::TRANS_TYPES.each do |type|
-      @trans_types << {:id => type, :name => type.capitalize}
+      @trans_types["#{type}".to_sym] = {:id => type, :name => type.capitalize}
     end
 
     respond_with(@trans_types)

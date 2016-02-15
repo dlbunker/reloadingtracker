@@ -11,7 +11,7 @@ Rails.application.routes.draw do
       resources :users, defaults: {format: :json}, only: [:show]
 
       resources :traits, defaults: {format: :json} do
-        get 'type_options', :on => :collection
+        get 'options', :on => :collection
         get 'primers' => 'traits#index', :on => :collection, :defaults => {:type => Trait::TYPE_PRIMER}
         get 'bullets' => 'traits#index', :on => :collection, :defaults => {:type => Trait::TYPE_BULLET}
         get 'powders' => 'traits#index', :on => :collection, :defaults => {:type => Trait::TYPE_POWDER}

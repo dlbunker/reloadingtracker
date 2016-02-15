@@ -24,8 +24,8 @@ angular.module('app.services').factory('Trait', function ($resource) {
     update: {
       method: 'PUT'
     },
-    type_options: {
-      url: '/api/v1/traits/type_options',
+    options: {
+      url: '/api/v1/traits/options',
       method: 'GET'
     },
     primers: {

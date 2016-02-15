@@ -61,7 +61,7 @@ angular.module('app.controllers', [])
     })
     .controller('TraitCreateController', function ($scope, $state, $stateParams, Trait) {
       $scope.trait = new Trait();
-      $scope.trait_options = Trait.type_options();
+      $scope.trait_options = Trait.options();
 
       $scope.addTrait = function () {
         $scope.trait.$save(function () {
@@ -78,7 +78,7 @@ angular.module('app.controllers', [])
 
       $scope.loadTrait = function () {
         $scope.trait = Trait.get({id: $stateParams.id});
-        $scope.trait_options = Trait.type_options();
+        $scope.trait_options = Trait.options();
       };
 
       $scope.loadTrait();

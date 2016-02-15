@@ -10,20 +10,46 @@ class Api::TraitsController < ApplicationController
 
     unless "#{params[:type]}".blank?
       obj = Object.const_get "#{params[:type]}".capitalize
-      @traits = obj.where(:active => true)
+      traits = obj.where(:active => true)
+
+      @traits = Hash.new
+      traits.each_with_index do |trait, index|
+        @traits["#{trait.attr_name}_#{index}".to_sym] = trait
+      end
     end
 
     respond_with(@traits)
   end
 
-  def type_options
-    @trait_types = Array.new
+  def options
+    # @options = Array.new
+    #
+    # Trait::TYPES.each do |type|
+    #   @options << {:attr_name => type, :name => "#{type}".capitalize}
+    # end
+    #
+    # respond_with(@options)
 
-    Trait::TYPES.each do |type|
-      @trait_types << {:attr_name => type, :name => "#{type}".capitalize}
+    @products = Hash.new
+
+    trait = 'Caliber'
+    @products[trait] = {:name => trait, :items => Array.new}
+
+    Caliber.all.each do |caliber|
+      @products[trait][:items] << {:id => caliber.id, :name => caliber.name}
     end
 
-    respond_with(@trait_types)
+    Trait::TYPES.each do |trait|
+      trait = "#{trait}".capitalize
+      @products[trait] = {:name => trait, :items => Array.new}
+
+      obj = Object.const_get trait
+      obj.where(:active => true).each do |item|
+        @products[trait][:items] << {:id => item.id, :name => item.name}
+      end
+    end
+
+    respond_with(@products)
   end
 
   def show
