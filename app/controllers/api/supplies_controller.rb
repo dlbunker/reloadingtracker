@@ -1,5 +1,5 @@
 class Api::SuppliesController < ApplicationController
-  before_action :set_supply, only: [:show, :edit, :update, :adjust, :destroy]
+  before_action :set_supply, only: [:show, :edit, :update, :onhand, :adjust, :destroy]
   before_action :authenticate_api_user!
 
   respond_to :json
@@ -76,7 +76,7 @@ class Api::SuppliesController < ApplicationController
 
     Transaction.create! :supply_id => @supply.id, :trans_type => trans_type, :qty => qty
 
-    onhand = ((trans_type == 'minus') ? @supply.onhand - qty : @supply.onhand + qty)
+    onhand = ((trans_type == Transaction::TRANS_TYPE_MINUS) ? @supply.onhand - qty : @supply.onhand + qty)
     @supply.update(:onhand => onhand)
 
     respond_with(@supply, location: api_load_url(@supply))

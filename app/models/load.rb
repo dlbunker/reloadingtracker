@@ -28,7 +28,7 @@ class Load < ActiveRecord::Base
                    .find_or_create_by!(:user_id => self.user_id, :product_id => supply.id)
 
       Transaction.create! :supply_id => supply.id, :trans_type => diff_type, :qty => diff_amount
-      onhand = ((diff_type == 'minus') ? supply.onhand - diff_amount : supply.onhand + diff_amount)
+      onhand = ((diff_type == Transaction::TRANS_TYPE_MINUS) ? supply.onhand - diff_amount : supply.onhand + diff_amount)
 
       supply.update! :onhand => onhand
     end

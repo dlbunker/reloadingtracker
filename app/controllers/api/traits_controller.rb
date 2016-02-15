@@ -22,34 +22,13 @@ class Api::TraitsController < ApplicationController
   end
 
   def options
-    # @options = Array.new
-    #
-    # Trait::TYPES.each do |type|
-    #   @options << {:attr_name => type, :name => "#{type}".capitalize}
-    # end
-    #
-    # respond_with(@options)
+    @options = Hash.new
 
-    @products = Hash.new
-
-    trait = 'Caliber'
-    @products[trait] = {:name => trait, :items => Array.new}
-
-    Caliber.all.each do |caliber|
-      @products[trait][:items] << {:id => caliber.id, :name => caliber.name}
+    Trait::TYPES.each do |type|
+      @options["#{type}".to_sym] = {:attr_name => type, :name => "#{type}".capitalize}
     end
 
-    Trait::TYPES.each do |trait|
-      trait = "#{trait}".capitalize
-      @products[trait] = {:name => trait, :items => Array.new}
-
-      obj = Object.const_get trait
-      obj.where(:active => true).each do |item|
-        @products[trait][:items] << {:id => item.id, :name => item.name}
-      end
-    end
-
-    respond_with(@products)
+    respond_with(@options)
   end
 
   def show

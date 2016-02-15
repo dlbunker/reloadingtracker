@@ -1,13 +1,13 @@
 <div class="form-group">
   <label for="name" class="col-sm-2 control-label">Trait Name</label>
   <div class="col-sm-10">
-    <input type="text" ng-model="trait.name" class="form-control" id="name" placeholder="Trait Name"/>
+    <input type="text" ng-model="trait.name" class="form-control" id="name" placeholder="Trait Name" required="required"/>
   </div>
 </div>
 <div class="form-group">
   <label for="attr_name" class="col-sm-2 control-label">Trait Type</label>
   <div class="col-sm-10">
-    <select id="attr_name" ng-model="trait.attr_name"
+    <select id="attr_name" ng-model="trait.attr_name" required="required"
             ng-options="option.attr_name as option.name for option in trait_options" class="form-control">
     </select>
   </div>
