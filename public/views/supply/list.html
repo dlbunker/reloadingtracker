@@ -1,0 +1,26 @@
+<div class="container pad-top">
+  <a ui-sref="newSupply" class="btn-primary btn-lg nodecoration">Add New Supply</a>
+  <h3>Supplies</h3>
+  <table class="table table-bordered table-striped table-hover supplytable">
+    <tr>
+      <th>Product Name</th>
+      <th>Product Type</th>
+      <th>Cost</th>
+      <th>Cost Qty</th>
+      <th>OnHand</th>
+      <th>Actions</th>
+    </tr>
+    <tr ng-repeat="supply in supplies">
+      <td><a ui-sref="viewSupply({id:supply.id})">{{supply.product.name}}</a></td>
+      <td>{{supply.product_type}}</td>
+      <td>{{supply.cost}}</td>
+      <td>{{supply.cost_qty}}</td>
+      <td>{{supply.onhand}}</td>
+      <td>
+        <a class="btn btn-primary" ui-sref="onhandSupply({id:supply.id})">OnHands</a>
+        <a class="btn btn-primary" ui-sref="editSupply({id:supply.id})">Edit</a>
+        <a class="btn btn-danger" ng-click="deleteSupply(supply)">Delete</a>
+      </td>
+    </tr>
+  </table>
+</div>

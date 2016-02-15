@@ -7,7 +7,6 @@ class Api::LoadsController < ApplicationController
 
   def index
     @loads = Load.all.where(:user_id => current_api_user.id)
-    @calibers = Caliber.all
     respond_with(@loads)
   end
 

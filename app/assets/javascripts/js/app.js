@@ -69,45 +69,74 @@
             })
             .state('loads', {
               url: '/loads',
-              templateUrl: viewsPrefix + 'loads.html',
+              templateUrl: viewsPrefix + 'load/list.html',
               controller: 'LoadListController'
             })
             .state('viewLoad', {
               url: '/loads/:id/view',
-              templateUrl: viewsPrefix + 'load-view.html',
+              templateUrl: viewsPrefix + 'load/view.html',
               controller: 'LoadViewController'
             })
             .state('newLoad', {
               url: '/loads/new',
-              templateUrl: viewsPrefix + 'load-add.html',
+              templateUrl: viewsPrefix + 'load/add.html',
               controller: 'LoadCreateController'
             })
             .state('editLoad', {
               url: '/loads/:id/edit',
-              templateUrl: viewsPrefix + 'load-edit.html',
+              templateUrl: viewsPrefix + 'load/edit.html',
               controller: 'LoadEditController'
             })
             .state('traits', {
               url: '/traits',
-              templateUrl: viewsPrefix + 'traits.html',
+              templateUrl: viewsPrefix + 'trait/list.html',
               controller: 'TraitListController'
             })
             .state('viewTrait', {
               url: '/trait/:id/view',
-              templateUrl: viewsPrefix + 'trait-view.html',
+              templateUrl: viewsPrefix + 'trait/view.html',
               controller: 'TraitViewController',
               access: {allowAnonymous: false}
             })
             .state('newTrait', {
               url: '/traits/new',
-              templateUrl: viewsPrefix + 'trait-add.html',
+              templateUrl: viewsPrefix + 'trait/add.html',
               controller: 'TraitCreateController',
               access: {allowAnonymous: false}
             })
             .state('editTrait', {
               url: '/traits/:id/edit',
-              templateUrl: viewsPrefix + 'trait-edit.html',
+              templateUrl: viewsPrefix + 'trait/edit.html',
               controller: 'TraitEditController',
+              access: {allowAnonymous: false}
+            })
+            .state('supplies', {
+              url: '/supplies',
+              templateUrl: viewsPrefix + 'supply/list.html',
+              controller: 'SupplyListController'
+            })
+            .state('viewSupply', {
+              url: '/supplies/:id/view',
+              templateUrl: viewsPrefix + 'supply/view.html',
+              controller: 'SupplyViewController',
+              access: {allowAnonymous: false}
+            })
+            .state('newSupply', {
+              url: '/supplies/new',
+              templateUrl: viewsPrefix + 'supply/add.html',
+              controller: 'SupplyCreateController',
+              access: {allowAnonymous: false}
+            })
+            .state('editSupply', {
+              url: '/supplies/:id/edit',
+              templateUrl: viewsPrefix + 'supply/edit.html',
+              controller: 'SupplyEditController',
+              access: {allowAnonymous: false}
+            })
+            .state('onhandSupply', {
+              url: '/supplies/:id/onhand',
+              templateUrl: viewsPrefix + 'supply/onhand.html',
+              controller: 'SupplyOnhandController',
               access: {allowAnonymous: false}
             })
             .state('sign_in', {
