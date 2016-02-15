@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160208165020) do
+ActiveRecord::Schema.define(version: 20160208172025) do
 
   create_table "calibers", force: :cascade do |t|
     t.string   "name"
@@ -45,6 +45,20 @@ ActiveRecord::Schema.define(version: 20160208165020) do
   add_index "loads", ["caliber_id"], name: "index_loads_on_caliber_id"
   add_index "loads", ["user_id"], name: "index_loads_on_user_id"
 
+  create_table "supplies", force: :cascade do |t|
+    t.integer  "user_id",                                             null: false
+    t.integer  "product_id"
+    t.string   "product_type"
+    t.decimal  "cost",         precision: 2, scale: 10, default: 0.0, null: false
+    t.integer  "cost_qty",                              default: 1,   null: false
+    t.integer  "onhand",                                default: 0,   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "supplies", ["onhand"], name: "index_supplies_on_onhand"
+  add_index "supplies", ["product_type", "product_id"], name: "index_supplies_on_product_type_and_product_id"
+
   create_table "traits", force: :cascade do |t|
     t.string   "attr_name",                 null: false
     t.string   "name",                      null: false
@@ -52,6 +66,18 @@ ActiveRecord::Schema.define(version: 20160208165020) do
     t.datetime "updated_at",                null: false
     t.boolean  "active",     default: true, null: false
   end
+
+  create_table "transactions", force: :cascade do |t|
+    t.integer  "supply_id",              null: false
+    t.string   "trans_type",             null: false
+    t.integer  "qty",        default: 0, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "transactions", ["qty"], name: "index_transactions_on_qty"
+  add_index "transactions", ["supply_id"], name: "index_transactions_on_supply_id"
+  add_index "transactions", ["trans_type"], name: "index_transactions_on_trans_type"
 
   create_table "users", force: :cascade do |t|
     t.string   "provider",                               null: false

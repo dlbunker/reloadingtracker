@@ -6,21 +6,24 @@ class Api::TraitsController < ApplicationController
   respond_to :json
 
   def index
-    search
-  end
+    @traits = Trait.all
 
-  def search
-    if "#{params[:options]}" == 'true'
-      @traits = type_options
-    else
-      @traits = Trait.all
-
-      unless "#{params[:type]}".blank?
-        @traits = @traits.where(:active => true, :attr_name => params[:type]) if Trait::TYPES.include? params[:type]
-      end
+    unless "#{params[:type]}".blank?
+      obj = Object.const_get "#{params[:type]}".capitalize
+      @traits = obj.where(:active => true)
     end
 
     respond_with(@traits)
+  end
+
+  def type_options
+    @trait_types = Array.new
+
+    Trait::TYPES.each do |type|
+      @trait_types << {:attr_name => type, :name => "#{type}".capitalize}
+    end
+
+    respond_with(@trait_types)
   end
 
   def show
@@ -59,16 +62,6 @@ class Api::TraitsController < ApplicationController
 
   def trait_params
     params.require(:trait).permit(:name, :attr_name)
-  end
-
-  def type_options
-    options = Array.new
-
-    Trait::TYPES.each do |type|
-      options << Trait.new(:attr_name => type, :name => "#{type}".capitalize)
-    end
-
-    options
   end
 
 end

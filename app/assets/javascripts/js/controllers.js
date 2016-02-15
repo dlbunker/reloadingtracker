@@ -17,9 +17,9 @@ angular.module('app.controllers', [])
       $scope.load = new Load();
 
       $scope.calibers = Caliber.query();
-      $scope.primers = Trait.query({type: 'primer'});
-      $scope.bullets = Trait.query({type: 'bullet'});
-      $scope.powders = Trait.query({type: 'powder'});
+      $scope.primers = Trait.primers();
+      $scope.bullets = Trait.bullets();
+      $scope.powders = Trait.powders();
 
       $scope.addLoad = function () {
         $scope.load.$save(function () {
@@ -38,9 +38,9 @@ angular.module('app.controllers', [])
         $scope.load = Load.get({id: $stateParams.id});
 
         $scope.calibers = Caliber.query();
-        $scope.primers = Trait.query({type: 'primer'});
-        $scope.bullets = Trait.query({type: 'bullet'});
-        $scope.powders = Trait.query({type: 'powder'});
+        $scope.primers = Trait.primers();
+        $scope.bullets = Trait.bullets();
+        $scope.powders = Trait.powders();
       };
 
       $scope.loadLoad();
@@ -61,7 +61,7 @@ angular.module('app.controllers', [])
     })
     .controller('TraitCreateController', function ($scope, $state, $stateParams, Trait) {
       $scope.trait = new Trait();
-      $scope.type_options = Trait.query({options: true});
+      $scope.trait_options = Trait.type_options();
 
       $scope.addTrait = function () {
         $scope.trait.$save(function () {
@@ -78,8 +78,60 @@ angular.module('app.controllers', [])
 
       $scope.loadTrait = function () {
         $scope.trait = Trait.get({id: $stateParams.id});
-        $scope.type_options = Trait.query({options: true});
+        $scope.trait_options = Trait.type_options();
       };
 
       $scope.loadTrait();
+    })
+    .controller('SupplyListController', function ($scope, $state, popupService, $window, Supply) {
+      $scope.supplies = Supply.query();
+
+      $scope.deleteSupply = function (supply) {
+        if (popupService.showPopup('Really delete this?')) {
+          supply.$delete(function () {
+            $scope.supplies = Supply.query();
+          });
+        }
+      };
+    })
+    .controller('SupplyViewController', function ($scope, $stateParams, Supply) {
+      $scope.supply = Supply.get({id: $stateParams.id});
+    })
+    .controller('SupplyCreateController', function ($scope, $state, $stateParams, Supply) {
+      $scope.supply = new Supply();
+      $scope.products = Supply.products();
+
+      $scope.addSupply = function () {
+        $scope.supply.$save(function () {
+          $state.go('supplies');
+        });
+      };
+    })
+    .controller('SupplyEditController', function ($scope, $state, $stateParams, Supply) {
+      $scope.updateSupply = function () {
+        $scope.supply.$update(function () {
+          $state.go('supplies');
+        });
+      };
+
+      $scope.loadSupply = function () {
+        $scope.supply = Supply.get({id: $stateParams.id});
+        $scope.products = Supply.products();
+      };
+
+      $scope.loadSupply();
+    })
+    .controller('SupplyOnhandController', function ($scope, $state, $stateParams, Supply) {
+      $scope.adjustSupply = function () {
+        $scope.supply.$adjust(function () {
+          $state.go('supplies');
+        });
+      };
+
+      $scope.loadSupply = function () {
+        $scope.supply = Supply.get({id: $stateParams.id});
+        $scope.trans_types = Supply.trans_types();
+      };
+
+      $scope.loadSupply();
     });
