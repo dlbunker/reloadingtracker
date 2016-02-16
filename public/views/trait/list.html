@@ -5,14 +5,18 @@
     <tr>
       <th>Trait Name</th>
       <th>Trait Type</th>
+      <th>Status</th>
       <th>Actions</th>
     </tr>
     <tr ng-repeat="trait in traits">
       <td><a ui-sref="viewTrait({id:trait.id})">{{trait.name}}</a></td>
       <td>{{trait.attr_name}}</td>
+      <td ng-show="trait.active">Active</td>
+      <td ng-show="!trait.active">Inactive</td>
       <td>
         <a class="btn btn-primary" ui-sref="editTrait({id:trait.id})">Edit</a>
-        <a class="btn btn-danger" ng-click="deleteTrait(trait)">Delete</a>
+        <a class="btn btn-danger" ng-show="trait.active" ng-click="deleteTrait(trait)">De-Activate</a>
+        <a class="btn btn-success" ng-show="!trait.active" ng-click="deleteTrait(trait)">Re-Activate</a>
       </td>
     </tr>
   </table>

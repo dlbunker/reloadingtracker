@@ -11,6 +11,7 @@ angular.module('navController', [])
 
       $scope.pages = [
         {name: 'My Loads', url: '#/loads', admin: false},
+        {name: 'My Supplies', url: '#/supplies', admin: false},
         {name: 'Traits', url: '#/traits', admin: true}
       ];
     });

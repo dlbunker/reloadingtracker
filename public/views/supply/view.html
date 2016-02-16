@@ -1,0 +1,29 @@
+<div class="container pad-top">
+  <h3>{{supply.product.name}}</h3>
+  <table class="table table-bordered table-striped table-hover supplytable">
+    <tr>
+      <td><strong>Product Type</strong></td>
+      <td>{{supply.product_type}}</td>
+    </tr>
+    <tr>
+      <td><strong>Product Name</strong></td>
+      <td style="width: 80%;">{{supply.product.name}}</td>
+    </tr>
+    <tr>
+      <td><strong>Cost</strong></td>
+      <td>{{supply.cost}}</td>
+    </tr>
+    <tr>
+      <td><strong>Cost Qty</strong></td>
+      <td>{{supply.cost_qty}}</td>
+    </tr>
+    <tr>
+      <td><strong>OnHand</strong></td>
+      <td>{{supply.onhand}}</td>
+    </tr>
+  </table>
+  <div>
+    <a class="btn btn-danger" href="#/supplies">My Supplies</a>
+    <a class="btn btn-primary" ui-sref="editSupply({id:supply.id})">Edit</a>
+  </div>
+</div>

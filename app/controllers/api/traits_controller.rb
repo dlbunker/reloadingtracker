@@ -6,21 +6,29 @@ class Api::TraitsController < ApplicationController
   respond_to :json
 
   def index
-    search
-  end
+    @traits = Trait.all
 
-  def search
-    if "#{params[:options]}" == 'true'
-      @traits = type_options
-    else
-      @traits = Trait.all
+    unless "#{params[:type]}".blank?
+      obj = Object.const_get "#{params[:type]}".capitalize
+      traits = obj.where(:active => true)
 
-      unless "#{params[:type]}".blank?
-        @traits = Trait.where(:attr_name => params[:type]) if Trait::TYPES.include? params[:type]
+      @traits = Hash.new
+      traits.each_with_index do |trait, index|
+        @traits["#{trait.attr_name}_#{index}".to_sym] = trait
       end
     end
 
     respond_with(@traits)
+  end
+
+  def options
+    @options = Hash.new
+
+    Trait::TYPES.each do |type|
+      @options["#{type}".to_sym] = {:attr_name => type, :name => "#{type}".capitalize}
+    end
+
+    respond_with(@options)
   end
 
   def show
@@ -48,7 +56,7 @@ class Api::TraitsController < ApplicationController
   end
 
   def destroy
-    @trait.destroy
+    @trait.update_attribute :active, !@trait.active?
     head :no_content
   end
 
@@ -59,16 +67,6 @@ class Api::TraitsController < ApplicationController
 
   def trait_params
     params.require(:trait).permit(:name, :attr_name)
-  end
-
-  def type_options
-    options = Array.new
-
-    Trait::TYPES.each do |type|
-      options << Trait.new(:attr_name => type, :name => "#{type}".capitalize)
-    end
-
-    options
   end
 
 end

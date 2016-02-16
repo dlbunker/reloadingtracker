@@ -7,6 +7,7 @@ class Trait < ActiveRecord::Base
   TYPES = [TYPE_PRIMER, TYPE_BULLET, TYPE_POWDER]
 
   has_many :loads
+  has_many :supplies, :as => :product
 
   validates_presence_of :attr_name, :name
   validates_uniqueness_of :attr_name, :scope => :name
